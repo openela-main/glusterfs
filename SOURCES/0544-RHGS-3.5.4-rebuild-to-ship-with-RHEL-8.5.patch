@@ -1,0 +1,47 @@
+From 840f437d232fbafac9f4448b0f8d0e9976ea1e1d Mon Sep 17 00:00:00 2001
+From: Tamar Shacked <tshacked@redhat.com>
+Date: Mon, 23 Aug 2021 20:46:13 +0300
+Subject: [PATCH 544/544] RHGS-3.5.4: rebuild to ship with RHEL-8.5
+
+Label: DOWNSTREAM ONLY
+BUG: 1996984
+
+Signed-off-by: Tamar Shacked <tshacked@redhat.com>
+Change-Id: Idafc64b8ee5da165c87428b8a5166cf319ef7660
+Reviewed-on: https://code.engineering.redhat.com/gerrit/c/rhs-glusterfs/+/267350
+Tested-by: RHGS Build Bot <nigelb@redhat.com>
+Reviewed-by: Sunil Kumar Heggodu Gopala Acharya <sheggodu@redhat.com>
+---
+ glusterfs.spec.in | 2 ++
+ rfc.sh            | 2 +-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/glusterfs.spec.in b/glusterfs.spec.in
+index 2be7677..4511979 100644
+--- a/glusterfs.spec.in
++++ b/glusterfs.spec.in
+@@ -1982,6 +1982,8 @@ fi
+ %endif
+ 
+ %changelog
++* Tue Aug 24 2021 Tamar Shacked <tshacked@redhat.com>
++- build RGHS client for RHEL-8.5 (#1996984)
+ 
+ * Mon May 11 2020 Sunny Kumar <sunkumar@redhat.com>
+ - added requires policycoreutils-python-utils on rhel8 for geo-replication
+diff --git a/rfc.sh b/rfc.sh
+index c0559b9..b1153be 100755
+--- a/rfc.sh
++++ b/rfc.sh
+@@ -315,7 +315,7 @@ main()
+     if [ -z "${reference}" ]; then
+         $drier git push $ORIGIN HEAD:refs/for/$branch/rfc;
+     else
+-        $drier git push $ORIGIN HEAD:refs/for/$branch/ref-${reference};
++        $drier git push $ORIGIN HEAD:refs/for/$branch;
+     fi
+ }
+ 
+-- 
+1.8.3.1
+
